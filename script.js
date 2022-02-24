@@ -27,7 +27,7 @@ const hour = minute * 60;
 const day = hour * 24;
 
 // set date input min with today's date
-const today = new Date().toLocaleDateString().split("T")[0];
+const today = new Date().toISOString().split("T")[0];
 dateEl.setAttribute("min", today);
 
 // populate countdown and complete UI
@@ -78,8 +78,8 @@ function updateCountdown(e) {
   };
   localStorage.setItem('countdown', JSON.stringify(savedCountdown));
   // check for valid date
-  if (countdownDate === "") {
-    alert("Please select a date");
+  if (countdownDate === "" || countdownTime === "") {
+    alert("Please select a date and time");
   } else {
     // get number version of current date, to update dom later
     countdownDatewithTime = countdownDate + "T" + countdownTime + ":00";
